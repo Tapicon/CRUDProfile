@@ -1,9 +1,6 @@
 //CRUD
 
-const Users = [{
-    nickname: 'Hamerte',
-    bio : 'um hamerte'
-}]
+const Users = []
 
 const Buttons = document.querySelectorAll('.btn_functions')
 
@@ -49,14 +46,14 @@ function showActionMenu(action) {
   const content = document.getElementById('modal_content');
   modal.style.display = 'flex';
 
-  // Fecha modal ao clicar fora
+  // close modal when clicked out
   modal.addEventListener('click', (e) => {
     if (e.target === modal) modal.style.display = 'none';
   });
 
-  // Escolhe a ação
+  // chose action
   switch (action) {
-    // 🟢 Adicionar usuário
+    // add
     case 'add':
       content.innerHTML = `
         <h2>Adicionar Usuário</h2>
@@ -72,7 +69,7 @@ function showActionMenu(action) {
       });
       break;
 
-    // 🟠 Modificar usuário
+    // update
     case 'update':
       content.innerHTML = `<h2>Selecione o usuário para modificar</h2>`;
       Users.forEach(u => {
@@ -80,7 +77,6 @@ function showActionMenu(action) {
         btn.className = 'user_option';
         btn.textContent = u.nickname;
         btn.addEventListener('click', () => {
-          // muda o conteúdo do modal para o modo de edição
           content.innerHTML = `
             <h2>Modificar: ${u.nickname}</h2>
             <input type="text" id="newNick" placeholder="Novo nickname" value="${u.nickname}"><br><br>
@@ -98,7 +94,7 @@ function showActionMenu(action) {
       });
       break;
 
-    // 🔴 Deletar usuário
+    // delete
     case 'delete':
       content.innerHTML = `<h2>Selecione o usuário para deletar</h2>`;
       Users.forEach(u => {
@@ -120,43 +116,45 @@ function showActionMenu(action) {
   }
 }
 
+// render function (shows the elements on the screen)
 function render(){
     const menu = document.getElementById("users_menu");
     menu.innerHTML = '';
-
-    Users.forEach(user => {
-        const UserDiv = document.createElement("div");
-        UserDiv.className = 'user_item';
-
-        const Content = document.createElement("div");
-        Content.className = 'user_header';
-        const ContentHeader = document.createElement('div') 
-        ContentHeader.className = 'content_header'
-        ContentHeader.innerHTML = `<span>${user.nickname}</span><button class='toggle_btn'>▼</button>`;
-
-        const HiddenContent = document.createElement('div')
-        HiddenContent.className = 'user_details'
-        HiddenContent.innerHTML = `<p>Name: ${user.nickname}</p><p>Bio: ${user.bio}</p>`
-        
-        ContentHeader.querySelector('.toggle_btn').addEventListener('click', () => {
-            const visible = HiddenContent.style.display
-            if (visible != 'block'){
-                HiddenContent.style.display = 'block'
-            } else{
-                HiddenContent.style.display = 'none'
-            }
-        })
-        Content.appendChild(ContentHeader)
-        Content.appendChild(HiddenContent)
-        UserDiv.appendChild(Content)
-        menu.appendChild(UserDiv)
-    });
+    // loop for users
+    if (Users.length > 0){
+      Users.forEach(user => {
+          const UserDiv = document.createElement("div");
+          UserDiv.className = 'user_item';
+          const Content = document.createElement("div");
+          Content.className = 'user_header';
+          const ContentHeader = document.createElement('div') 
+          ContentHeader.className = 'content_header'
+          ContentHeader.innerHTML = `<span>${user.nickname}</span><button class='toggle_btn'>▼</button>`;
+          // hidden menu
+          const HiddenContent = document.createElement('div')
+          HiddenContent.className = 'user_details'
+          HiddenContent.innerHTML = `<p>Name: ${user.nickname}</p><p>Bio: ${user.bio}</p>`
+          
+          ContentHeader.querySelector('.toggle_btn').addEventListener('click', () => {
+              const visible = HiddenContent.style.display
+              if (visible != 'block'){
+                  HiddenContent.style.display = 'block'
+              } else{
+                  HiddenContent.style.display = 'none'
+              }
+          })
+          Content.appendChild(ContentHeader)
+          Content.appendChild(HiddenContent)
+          UserDiv.appendChild(Content)
+          menu.appendChild(UserDiv)
+      });}
 }
+// create EventListener for each button with yours respective action
 Buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         let action = btn.dataset.func;
         showActionMenu(action);
     });
 });
-console.log(Buttons)
+
 render()
