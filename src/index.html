@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #interface{
+            display: flex;
+            background-color: blanchedalmond;
+            height: 400px;
+            width: 600px;
+            justify-content: space-between;
+            border-radius: 40px;
+
+        }
+        #users{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 40%;
+            border-radius: 40px 0 0 40px; /* arredonda só o lado esquerdo */
+            overflow: hidden; 
+        }
+        #functions{
+            color: aliceblue;
+            width: 60%;
+            background-color: black;
+            overflow: hidden;
+            border-radius: 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn_functions{
+            height: 50px;
+            width: 250px;
+        }
+        #users_menu{
+            background-color: burlywood;
+            height: 100%;
+            width: 100%;
+        }
+        .user_item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            cursor: pointer;
+          }
+          
+        .user_header {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            font-weight: bold;
+        }
+        .content_header{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            font-weight: bold;
+        }
+        .user_details {
+            margin-top: 5px;
+            display: none; /* começa oculto */
+            font-size: 0.9em;
+            color: beige;
+        }
+        .action_menu {
+            background-color: gray;
+            width: 500px;
+            margin-top: 20px;
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+          
+        .modal_content {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 20px;
+            min-width: 300px;
+            text-align: center;
+        }
+          
+        .user_option {
+            background-color: #ddd;
+            margin: 6px;
+            padding: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+          
+        .user_option:hover {
+            background-color: #bbb;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>
+        CRUD USUARIOS
+    </h1>
+    <section id="interface">
+        <div id="users">
+            <h2>Usuarios</h2>
+            <div id="users_menu"> </div>
+        </div>
+        <div id="functions">
+            <h2>FUNÇÕES</h2>
+            <button class="btn_functions" data-func="add">ADICIONAR</button>
+            <button class="btn_functions" data-func="update">MODIFICAR</button>
+            <button class="btn_functions" data-func="delete">DELETAR</button>
+        </div>
+    </section>
+    
+
+    <div id="action_menu" class="modal" style="display:none;">
+        <div class="modal_content" id="modal_content"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
