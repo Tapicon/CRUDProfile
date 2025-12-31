@@ -1,6 +1,22 @@
 //CRUD
 
-const Users = []
+const Users = [
+  { nickname: "Hamerte", bio: "Explorador do código e amante de café" },
+  { nickname: "Lunaris", bio: "Apaixonado por astronomia e JavaScript" },
+  { nickname: "Tapioca", bio: "Programador criativo e fã de front-end" },
+  { nickname: "ByteFox", bio: "Especialista em automação e gatos" },
+  { nickname: "NeoDev", bio: "Desbravando o mundo Node.js" },
+  { nickname: "CodeStorm", bio: "Transformando ideias em algoritmos" },
+  { nickname: "Z3nith", bio: "Desenvolvedor tranquilo e minimalista" },
+  { nickname: "Skyler", bio: "Amante de APIs e arquitetura limpa" },
+  { nickname: "NovaByte", bio: "Sempre testando novas tecnologias" },
+  { nickname: "EchoWave", bio: "Focado em performance e design" },
+  { nickname: "DeltaZero", bio: "Entusiasta de segurança e backend" },
+  { nickname: "PixelSoul", bio: "UI/UX é a alma do código" },
+  { nickname: "DataGhost", bio: "Manipulador de dados e curiosidades" },
+  { nickname: "Crimson", bio: "Desenvolvedor noturno e perfeccionista" },
+  { nickname: "BlueNova", bio: "Transformando bugs em aprendizado" }
+];
 
 const Buttons = document.querySelectorAll('.btn_functions')
 
